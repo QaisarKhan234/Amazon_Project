@@ -3,7 +3,12 @@ import "./Header.css";
 import { Link } from 'react-router-dom';
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import { useStateValue } from './context/ContextProvider';
 const Header = () => {
+// const [{state=[]}, dispatch] = useStateValue();
+// the below works like the above and basket is destructure which is the current state.
+  const [{basket}, dispatch] = useStateValue();
+  console.log(basket); 
   return (
     <nav className="header">
       <Link to="/" className="hoverBorder">
@@ -39,7 +44,7 @@ const Header = () => {
         <Link to="/checkout" className="header_Link hoverBorder">
           <div className="header_basket">
             <ShoppingBasketIcon />
-            <span className="header_opt2 header_basketCount">0</span>
+            <span className="header_opt2 header_basketCount">{basket?.length}</span>
           </div>
         </Link>
       </div>
