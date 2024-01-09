@@ -1,0 +1,9 @@
+.foot_panel1{
+    background-color: #485769;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+}

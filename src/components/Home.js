@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Home.css";
 import Product from './Product';
+import Footer from './Footer';
 const Home = () => {
   return (
     <div className="home">
@@ -66,6 +67,9 @@ const Home = () => {
           rating={4}
           image="https://images-na.ssl-images-amazon.com/images/G/01/img22/Events/Winter23/WIN23_HostessGifts_Glassware_QuadCard_D_03_186x116._SY116_CB577074175_.jpg"
         />
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

@@ -1,20 +1,5 @@
 export const initialState = {
-    basket: [{
-        id:"12",
-          title:"title here",
-          price:100,
-          rating:4,
-          image:"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2023/EBF23/Fuji_Desktop_Single_image_EBF_1x_v3._SY304_CB573698005_.jpg"
-        
-    },
-    {
-        id:"12",
-          title:"title here",
-          price:100,
-          rating:4,
-          image:"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2023/EBF23/Fuji_Desktop_Single_image_EBF_1x_v3._SY304_CB573698005_.jpg"
-        
-    }],
+    basket: [],
     user: null,
 }
 
@@ -26,12 +11,22 @@ const reducer = (state, action) => {
                 ...state,
                 basket: [...state.basket, action.payload]
             }
-            break;
+            
         case 'Remove_From_Basket':
-            return {
-                
+
+            // we copy the basket
+            let newBasket = [...state.basket];
+            console.log(newBasket , "---new Basket")
+
+            const index = state.basket.findIndex((basketItem) => basketItem.id === action.id)
+            if (index >= 0){
+                newBasket.splice(index, 1)
+                console.log(newBasket, "-------updated basket")
+            }else{
+                console.warn(`Cannot fine the item with the (id: ${action.id}) because it is not found.`);
             }
-            break;
+            return {...state, basket: newBasket}
+            
         default:
             return state;
     }
